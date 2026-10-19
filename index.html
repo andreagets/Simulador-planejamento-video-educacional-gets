@@ -101,7 +101,7 @@ textarea{display:block;min-height:96px}
 table.rs{table-layout:fixed}
 table.rs th,table.rs td{overflow-wrap:anywhere;min-width:0}
 #rt textarea{min-height:140px}
-#sceneTarget{display:block;width:100%;max-width:400px;margin-block:8px}
+
 .stage-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));align-items:stretch}
 .stage-controls .btn{width:100%;margin:0}
 .sb{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}
@@ -176,7 +176,23 @@ main>*,section,.card,.act{max-width:100%;min-width:0}
 [hidden]{display:none!important}.module-switch{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding-top:16px;padding-bottom:16px}.record-module{padding-top:18px;padding-bottom:32px}.record-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:16px 0}.record-steps button{white-space:normal;min-width:0;padding:12px 8px;border:1px solid #b9c8d0;border-radius:10px;background:#fff;color:#173b43;font:inherit;cursor:pointer}.record-steps button[aria-current="step"]{background:#173f47;color:white}.record-module label{display:block;font-weight:600;margin:12px 0}.record-module input:not([type=checkbox]),.record-module textarea,.record-module select{display:block;width:100%;max-width:100%;box-sizing:border-box;padding:10px;border:1px solid #a7bac2;border-radius:8px;font:inherit;background:white;color:#16333d;margin-top:5px}.record-module input[type=checkbox]{width:20px;height:20px;vertical-align:middle;margin-right:8px}.record-module textarea{min-height:90px;resize:vertical}.record-module .actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}.record-module .actions>*{max-width:100%;white-space:normal}.record-module .grid{grid-template-columns:repeat(2,minmax(0,1fr))}.record-module .card{min-width:0;overflow-wrap:anywhere}.rec-feedback{padding:14px;border-left:4px solid #168477;background:#eef8f5;margin:12px 0}.rec-progress{font-weight:600}.rec-scene-text{white-space:pre-wrap;overflow-wrap:anywhere}.rec-take{border-top:1px solid #c8d5d8;padding:12px 0}.rec-demo{height:165px;position:relative;overflow:hidden;border-radius:10px;background:#dce9e7;display:grid;place-items:center;margin:12px 0}.rec-demo .person{width:76px;height:110px;border-radius:40px 40px 8px 8px;background:#247c79;position:relative;margin-top:45px}.rec-demo .person:before{content:'';position:absolute;width:48px;height:48px;border-radius:50%;background:#bf8c67;top:-35px;left:14px}.rec-demo.backlight{background:linear-gradient(90deg,#34454c,#fff 50%,#34454c)}.rec-demo.backlight .person{filter:brightness(.28)}.rec-demo.distant .person{transform:scale(.4)}.rec-demo .demo-caption{position:absolute;bottom:5px;background:#ffffffed;padding:3px 8px;border-radius:4px;color:#173b43}.record-module details{margin:12px 0}.record-module summary{cursor:pointer;font-weight:600}.record-module h2:focus{outline:none}.record-module button:focus-visible{outline:3px solid #d08012;outline-offset:3px}
 @media(max-width:700px){.record-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.record-steps button:last-child{grid-column:1/-1}.record-module .grid{grid-template-columns:1fr}.module-switch .st{flex-basis:100%}.record-module .actions .btn{flex:1 1 145px}.record-module{padding-left:14px;padding-right:14px}}
 .usage-notice{margin:24px 0;padding:20px;border:2px solid #18766e;border-left-width:6px;border-radius:12px;background:#f0f8f6;color:#173b43;overflow-wrap:anywhere}.usage-notice h3{margin-top:0}.usage-notice blockquote{margin:14px 0 0;padding:12px 16px;background:#fff;border-left:3px solid #18766e;border-radius:6px}.usage-notice blockquote p{margin:0}.usage-notice a{color:#075c62;text-decoration:underline}@media(max-width:480px){.usage-notice{padding:14px}.usage-notice blockquote{padding:10px}}
-</style>
+/* Área de trabalho ampla, sem comprimir os campos de edição. */
+@media screen and (min-width:901px){
+ .w{max-width:1800px;width:96%;padding-inline:clamp(20px,2vw,40px)}
+ header h1,header p,main p,.record-module p,footer p{max-width:none;width:auto}
+ header .w{width:96%;max-width:1800px}
+ header .lead{white-space:normal;overflow:visible;text-overflow:clip}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .two{grid-template-columns:repeat(2,minmax(0,1fr))}
+ table.rs th:nth-child(1){width:12%}
+ table.rs th:nth-child(2){width:28%}
+ table.rs th:nth-child(3){width:34%}
+ table.rs th:nth-child(4){width:26%}
+ #rt textarea{min-height:180px}
+ .bar{height:auto;min-height:46px}
+ .bar span{padding-block:10px}
+}
+.scene-plan{display:block;width:100%;margin:6px 0 12px;min-width:0}#rt td label{display:block;font-size:.9rem;font-weight:600}#rt .scene-plan{font-size:.85rem;line-height:1.4}#rt .scene-plan option{font-size:inherit}</style>
 </head>
 <body>
 <a class="skip" href="#main">Ir para o conteúdo</a><noscript><p>Ative o JavaScript para usar as abas, o roteiro e o checklist.</p></noscript>
@@ -261,7 +277,7 @@ main>*,section,.card,.act{max-width:100%;min-width:0}
 <p>Escreva pelo menos três cenas, contemplando introdução, desenvolvimento e fechamento. Em Tempo, informe início e fim previstos; em Imagem e ação, registre também o plano escolhido; em Elementos, indique textos de apoio, sons, créditos e acessibilidade.</p>
 <div class="sc"><table id="rt" class="rs"><tr class="hd"><th>Tempo</th><th>Imagem e ação</th><th>Fala</th><th>Elementos</th></tr></table></div>
 <button class="btn" id="add">Adicionar cena</button><button class="btn alt" id="cp">Copiar roteiro</button>
-<button class="btn alt" id="download">Baixar roteiro completo (.txt)</button><div class="st" id="cps" role="status"></div><textarea id="copytext" hidden readonly aria-label="Roteiro para cópia manual"></textarea><p class="st" id="saveStatus" role="status"></p></div><div class="card"><h3>Aplique o plano escolhido a uma cena</h3><label for="sceneTarget">Cena do seu roteiro</label><select id="sceneTarget"></select><button class="btn alt" id="applyPlan">Inserir enquadramento nesta cena</button><p id="planStatus" class="st" role="status"></p></div><div class="card"><h3>Veja seu roteiro em outros formatos</h3><p>A prévia usa os mesmos dados da tabela; para alterar o conteúdo, edite as cenas acima.</p><button class="btn alt" id="previewText">Ver como texto corrido</button><button class="btn alt" id="previewBoard">Ver como storyboard</button><div id="ownPreview" aria-live="polite"></div></div><p><b>Resultado desta etapa:</b> roteiro com falas, ações e enquadramentos definidos.</p>
+<button class="btn alt" id="download">Baixar roteiro completo (.txt)</button><div class="st" id="cps" role="status"></div><textarea id="copytext" hidden readonly aria-label="Roteiro para cópia manual"></textarea><p class="st" id="saveStatus" role="status"></p></div><div class="card"><h3>Veja seu roteiro em outros formatos</h3><p>A prévia usa os mesmos dados da tabela; para alterar o conteúdo, edite as cenas acima.</p><button class="btn alt" id="previewText">Ver como texto corrido</button><button class="btn alt" id="previewBoard">Ver como storyboard</button><div id="ownPreview" aria-live="polite"></div></div><p><b>Resultado desta etapa:</b> roteiro com falas, ações e enquadramentos definidos.</p>
 </section>
 
 <section class="pn" hidden>
@@ -393,9 +409,10 @@ var storyHints=['Introdução: contextualize o tema e formule a pergunta que ori
 function chooseStory(i){$('[data-story]').forEach(function(b){b.setAttribute('aria-pressed',+b.dataset.story===i)});one('#storyInfo').textContent=storyHints[i]}
 $('[data-story]').forEach(function(b){b.onclick=function(){chooseStory(+b.dataset.story)}});chooseStory(0);
 $('[data-fade]').forEach(function(b){b.onclick=function(){var show=b.dataset.fade==='in';var v=one('#fadeVisual');v.style.transition='none';v.style.opacity=show?'0':'1';void v.offsetWidth;v.style.transition='';v.style.opacity=show?'1':'0';one('#fadeStatus').textContent=show?'Fade in: a cena surge gradualmente.':'Fade out: a cena desaparece gradualmente.'}});
-function updateTargets(){var select=one('#sceneTarget'),value=select.value;select.replaceChildren();$('tr',rt).slice(1).forEach(function(r,i){var opt=document.createElement('option');opt.value=i;opt.textContent='Cena '+(i+1);select.appendChild(opt)});if(+value<select.options.length)select.value=value}
-var originalEnhance=enhanceRows;enhanceRows=function(){originalEnhance();updateTargets()};updateTargets();
-one('#applyPlan').onclick=function(){var i=+one('#sceneTarget').value;var r=$('tr',rt).slice(1)[i];if(!r)return;var field=$('textarea',r)[1],name=one('#pn').textContent;field.value=name+(field.value?' — '+field.value:'');save();one('#planStatus').textContent=name+' inserido na cena '+(i+1)+'.'};
+function currentPlan(text){var m=text.match(/^(?:Enquadramento:\s*)?(Plano (?:geral|médio|próximo|detalhe))(?=\s*(?:—|\n|$))/i);return m?P.findIndex(function(p){return p[0].toLowerCase()===m[1].toLowerCase()}):-1}
+function replacePlan(field,index){var text=field.value.replace(/^(?:Enquadramento:\s*)?Plano (?:geral|médio|próximo|detalhe)\s*(?:—\s*|\n\s*)?/i,'');field.value=(index<0?'':'Enquadramento: '+P[index][0]+'\n')+text;field.dispatchEvent(new Event('input',{bubbles:true}))}
+function enhancePlans(){$('tr',rt).slice(1).forEach(function(r,i){var field=$('textarea',r)[1];var select=r.querySelector('.scene-plan');if(!select){var label=document.createElement('label');label.textContent='Enquadramento';select=document.createElement('select');select.className='scene-plan';var empty=document.createElement('option');empty.value='';empty.textContent='Sem enquadramento definido';empty.defaultSelected=true;empty.selected=true;select.appendChild(empty);P.forEach(function(p,j){var opt=document.createElement('option');opt.value=j;opt.textContent=p[0];select.appendChild(opt)});label.appendChild(select);field.before(label);select.onchange=function(){replacePlan(field,select.value===''?-1:+select.value)};field.addEventListener('input',function(){var n=currentPlan(field.value);select.value=n<0?'':String(n)})}select.setAttribute('aria-label','Enquadramento da cena '+(i+1));var n=currentPlan(field.value);select.value=n<0?'':String(n)})}
+var originalEnhance=enhanceRows;enhanceRows=function(){originalEnhance();enhancePlans()};enhancePlans();
 function ownPreview(board){var box=one('#ownPreview');box.replaceChildren();box.className=board?'grid':'';$('tr',rt).slice(1).forEach(function(r,i){var vals=$('textarea',r).map(function(x){return x.value});var card=document.createElement('div');card.className='card own-scene';var title=document.createElement('h3');title.textContent='Cena '+(i+1)+(vals[0]?' · '+vals[0]:'');card.appendChild(title);if(board){var frame=document.createElement('div');frame.className='storyframe';frame.textContent='Quadro '+(i+1)+' · '+(vals[1]||'Descreva a imagem na tabela');card.appendChild(frame)}var text=document.createElement('p');text.textContent=(board?'':'Imagem e ação: '+(vals[1]||'A preencher')+'\n')+'Fala: '+(vals[2]||'A preencher')+'\nElementos: '+(vals[3]||'A preencher');card.appendChild(text);box.appendChild(card)})}
 one('#previewText').onclick=function(){ownPreview(false)};one('#previewBoard').onclick=function(){ownPreview(true)};
 rt.addEventListener('input',function(){one('#ownPreview').replaceChildren()});
